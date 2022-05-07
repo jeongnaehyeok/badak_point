@@ -2,7 +2,7 @@ name: ✉️ Send Email
 
 on:
   schedule:
-    - cron: '32 5 * * *'
+    - cron: '0 50 * * *'
 
 jobs:
   build:
