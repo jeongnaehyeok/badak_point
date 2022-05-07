@@ -1,0 +1,41 @@
+name: ✉️ Send Email
+
+on:
+   schedule:
+     - cron: '0 1 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04 
+    strategy:
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install pyhton package
+      run: pip install -r requirements.txt
+
+    - name: Install ubuntu package 
+      run: |        
+        sudo apt-get install fonts-unfonts-core
+        sudo apt-get install fonts-unfonts-extra
+        wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add        
+        sudo apt-get install google-chrome-stable    
+        wget https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
+        unzip ./chromedriver_linux64.zip 
+
+    - name: Check data & Send Email!
+      env:
+        SEND_EMAIL: ${{ secrets.SEND_EMAIL }}
+        RECV_EMAIL: ${{ secrets.RECV_EMAIL }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        SMTP_NAME: ${{ secrets.SMTP_NAME }}
+        SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      run: | 
+        python ./main.py 
