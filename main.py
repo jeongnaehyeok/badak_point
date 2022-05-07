@@ -5,8 +5,11 @@ from selenium.webdriver.common.by import By
 from pprint import pprint
 
 options = webdriver.ChromeOptions()
+options.add_argument('--headless')               # headless
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--disable-gpu')
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=options)
-driver.implicitly_wait(3)
 driver.implicitly_wait(3)
 
 # 미국 신고가 확인
