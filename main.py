@@ -55,12 +55,12 @@ text = f"오늘의 US 시장 정보입니다.\n" \
        f"신고가 {kr_high}개, 신저가 {kr_low}개로 오늘 한국 현호 포인트는 {round(hyeonho_kr, 3)}%입니다."
 msg = MIMEText(text)  # MIMEText(text , _charset = "utf8")
 
-sendEmail = os.environ.get('sendEmail')
-recvEmail = os.environ.get('recvEmail')
-password = os.environ.get('password')
+sendEmail = os.environ.get('SEND_EMAIL')
+recvEmail = os.environ.get('RECV_EMAIL')
+password = os.environ.get('PASSWORD')
 
-smtpName = os.environ.get('smtpName')
-smtpPort = os.environ.get('smtpPort')
+smtpName = os.environ.get('SMTP_NAME')
+smtpPort = os.environ.get('SMTP_PORT')
 
 today = datetime.datetime.now()
 
