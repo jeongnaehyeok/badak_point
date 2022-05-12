@@ -13,14 +13,14 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.implicitly_wait(3)
 
 # 미국 신고가 확인
-driver.get('https://kr.investing.com/equities/52-week-high?country=usa')
+driver.get('https://www.investing.com/equities/52-week-high?country=usa')
 search_us_high = driver.find_elements(by=By.XPATH, value='//*[@id="stockPageInnerContent"]/table/tbody/tr')
 us_high = len(search_us_high)
 pprint(us_high)
 
-# 미국 신저가 확인
-driver.get('https://kr.investing.com/equities/52-week-low?country=usa')
-search_us_low = driver.find_elements(by=By.XPATH, value='//*[@id="stockPageInnerContent"]/table/tbody/tr/td/a')
+# # 미국 신저가 확인
+driver.find_element(by=By.XPATH, value='//*[@id="808"]/a').click()
+search_us_low = driver.find_elements(by=By.XPATH, value='//*[@id="stockPageInnerContent"]/table/tbody/tr')
 us_low = len(search_us_low)
 pprint(us_low)
 
@@ -28,13 +28,13 @@ hyeonho_us = us_high / (us_high + us_low) * 100
 pprint(hyeonho_us)
 
 # 한국 신고가 확인
-driver.get('https://kr.investing.com/equities/52-week-high?country=south-korea')
+driver.get('https://www.investing.com/equities/52-week-high?country=south-korea')
 search_kr_high = driver.find_elements(by=By.XPATH, value='//*[@id="stockPageInnerContent"]/table/tbody/tr')
 kr_high = len(search_kr_high)
 pprint(kr_high)
 
-# 한국 신저가 확인
-driver.get('https://kr.investing.com/equities/52-week-low?country=south-korea')
+# # 한국 신저가 확인
+driver.find_element(by=By.XPATH, value='//*[@id="808"]/a').click()
 search_kr_low = driver.find_elements(by=By.XPATH, value='//*[@id="stockPageInnerContent"]/table/tbody/tr/td/a')
 kr_low = len(search_kr_low)
 pprint(kr_low)
@@ -59,7 +59,7 @@ text = f"오늘의 US 시장 정보입니다.\n" \
 msg = MIMEText(text)  # MIMEText(text , _charset = "utf8")
 
 sendEmail = os.environ.get('SEND_EMAIL')
-recvEmail = os.environ.get('RECV_EMAIL')
+recvEmail = os.environ.get('RECV_EMAIL').split(',')
 password = os.environ.get('PASSWORD')
 
 smtpName = os.environ.get('SMTP_NAME')
@@ -69,7 +69,7 @@ today = datetime.datetime.now()
 
 msg['Subject'] = f'💸 {today.strftime("%Y-%m-%d")} 주식 정보 💸'
 msg['From'] = sendEmail
-msg['To'] = recvEmail
+msg['To'] = ", ".join(recvEmail)
 print(msg.as_string())
 
 s = smtplib.SMTP(smtpName, smtpPort)  # 메일 서버 연결
