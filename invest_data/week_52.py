@@ -1,5 +1,4 @@
-# from venv.constant.header import headers
-from invest_mail_service.constant.header import headers
+from ..constant.header import headers
 import requests
 from lxml.html import fromstring
 
