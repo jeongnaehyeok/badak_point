@@ -1,4 +1,4 @@
-from ..constant.header import headers
+from .constant.header import headers
 import requests
 from lxml.html import fromstring
 
