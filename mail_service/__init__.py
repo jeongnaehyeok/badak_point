@@ -2,6 +2,7 @@ import smtplib
 from email.mime.text import MIMEText
 import datetime
 
+
 def generate_hyeonho_point_text(us_high, us_low, kr_high, kr_low):
     hyeonho_us = us_high / (us_high + us_low) * 100
     hyeonho_kr = kr_high / (kr_high + kr_low) * 100
@@ -12,8 +13,8 @@ def generate_hyeonho_point_text(us_high, us_low, kr_high, kr_low):
            f"신고가 {kr_high}개, 신저가 {kr_low}개로 오늘 한국 현호 포인트는 {round(hyeonho_kr, 3)}%입니다."
     return text
 
-def send(text, send_email, recv_email, password):
 
+def send(text, send_email, recv_email, password):
     msg = MIMEText(text)  # MIMEText(text , _charset = "utf8")
 
     smtpName = "smtp.gmail.com"
