@@ -1,0 +1,11 @@
+{
+  "name": "invest_mail_service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jeongnaehyeok/invest_mail_service.git",
+  "author": "naehyeok.jeong <cnh0301@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
