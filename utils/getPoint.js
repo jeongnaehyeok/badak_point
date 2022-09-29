@@ -28,6 +28,6 @@ const get52WeekLowLength = (country) =>
 module.exports.getPoint = async (country) => {
   const high = await get52WeekHighLength(country);
   const low = await get52WeekLowLength(country);
-  const point = ((high / (high + low)) * 100).toFixed(3);
+  const point = Number(((high / (high + low)) * 100).toFixed(3));
   return { point, high, low };
 };
