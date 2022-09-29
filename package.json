@@ -1,8 +1,8 @@
 {
-  "name": "invest_mail_service",
+  "name": "badak_point",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:jeongnaehyeok/invest_mail_service.git",
+  "repository": "git@github.com:jeongnaehyeok/badak_point.git",
   "author": "naehyeok.jeong <cnh0301@gmail.com>",
   "license": "MIT",
   "scripts": {
@@ -17,3 +17,4 @@
     "nodemailer": "^6.8.0"
   }
 }
+
