@@ -11,14 +11,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ["16.x"]
     steps:
-      - name: Check data & Send Email!
       - uses: actions/checkout@v3
         with:
-          node-version: 16.14.2
+          fetch-depth: 0
+      - name: Prepare Package
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
           cache: yarn
+        run: yarn install --frozen-lockfile
+      - name: Check data & Send Email!
         env:
-          SEND_EMAIL: ${{ secrets.SEND_EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-      - run: yarn install --frozen-lockfile
-      - run: yarn start
+            SEND_EMAIL: ${{ secrets.SEND_EMAIL }}
+            PASSWORD: ${{ secrets.PASSWORD }}
+        run: yarn start
