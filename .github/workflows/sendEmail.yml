@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - master
-      - node-notion
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 22 * * *'
 
 jobs:
   build:

@@ -22,7 +22,7 @@ const getMails = () => {
 
 const generatePointContents = async (country) => {
   const { point, high, low } = await getPoint(country);
-  return `오늘의 ${countrys[country]} 시장 정보입니다.\n신고가 ${high}개, 신저가 ${low}개로 오늘 ${countrys[country]} 현호 포인트는 ${point}%입니다.\n`;
+  return `오늘의 ${countrys[country]} 시장 정보입니다.\n신고가 ${high}개, 신저가 ${low}개로 오늘 ${countrys[country]} 바닥 지수는 ${point}%입니다.\n`;
 };
 
 module.exports.sendPointMail = async () => {
@@ -46,7 +46,7 @@ module.exports.sendPointMail = async () => {
   const info = await transporter.sendMail({
     from: process.env.SEND_EMAIL,
     to: mails,
-    subject: `💸 ${date} 주식 정보 💸 `,
+    subject: `💸 ${date} 바닥 지수 정보 💸 `,
     text: `${usaInfo}\n${krInfo}`,
   });
 
