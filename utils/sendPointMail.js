@@ -3,6 +3,7 @@ const path = require("path");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const { getPoint } = require("./getPoint");
+const { formatInTimeZone } = require("date-fns-tz");
 
 dotenv.config();
 
@@ -26,9 +27,11 @@ const generatePointContents = async (country) => {
 
 module.exports.sendPointMail = async () => {
   const mails = getMails();
+  const date = formatInTimeZone(new Date(), 'Asia/Seoul', 'yyyy년 MM월 dd일') 
+
   const usaInfo = await generatePointContents("usa");
   const krInfo = await generatePointContents("south-korea");
-
+  
   const transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
@@ -43,7 +46,7 @@ module.exports.sendPointMail = async () => {
   const info = await transporter.sendMail({
     from: process.env.SEND_EMAIL,
     to: mails,
-    subject: `💸 오늘의 주식 정보 💸 `,
+    subject: `💸 ${date} 주식 정보 💸 `,
     text: `${usaInfo}\n${krInfo}`,
   });
 
