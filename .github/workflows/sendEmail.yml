@@ -1,0 +1,24 @@
+name: ✉️ Send Email
+
+on:
+  push:
+    branches:
+      - master
+      - node-notion
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check data & Send Email!
+      - uses: actions/checkout@v3
+        with:
+          node-version: 16.14.2
+          cache: yarn
+        env:
+          SEND_EMAIL: ${{ secrets.SEND_EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+      - run: yarn install --frozen-lockfile
+      - run: yarn start
