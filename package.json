@@ -1,0 +1,19 @@
+{
+  "name": "invest_mail_service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jeongnaehyeok/invest_mail_service.git",
+  "author": "naehyeok.jeong <cnh0301@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^1.3.7",
+    "dotenv": "^16.0.2",
+    "nodemailer": "^6.8.0"
+  }
+}
