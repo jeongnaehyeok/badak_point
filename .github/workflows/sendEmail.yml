@@ -27,6 +27,6 @@ jobs:
           SEND_EMAIL: ${{ secrets.SEND_EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
           NOTION_US_DATABASE_ID: ${{ secrets.NOTION_US_DATABASE_ID }}
-          NOTION_KR_DATABAS⚙️E_ID: ${{ secrets.NOTION_KR_DATABASE_ID }}
+          NOTION_KR_DATABASE_ID: ${{ secrets.NOTION_KR_DATABASE_ID }}
           NOTION_USER_KEY: ${{ secrets.NOTION_USER_KEY }}
         run: yarn start
