@@ -29,4 +29,6 @@ jobs:
           NOTION_US_DATABASE_ID: ${{ secrets.NOTION_US_DATABASE_ID }}
           NOTION_KR_DATABASE_ID: ${{ secrets.NOTION_KR_DATABASE_ID }}
           NOTION_USER_KEY: ${{ secrets.NOTION_USER_KEY }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_CLIENT_ID: ${{ secrets.DISCORD_CLIENT_ID }}
         run: yarn start
