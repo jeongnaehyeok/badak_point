@@ -1,6 +1,6 @@
 const { Client } = require("@notionhq/client");
 const { formatInTimeZone } = require("date-fns-tz");
-const { getPoint } = require("./getPoint");
+const { getPoint } = require("./utils/getPoint");
 
 const dotenv = require("dotenv");
 
@@ -48,7 +48,11 @@ const addBadakPointDB = async (country) => {
     .catch((e) => console.log(e));
 };
 
-module.exports.updateBadakPointDB = async () => {
+const updateBadakPointDB = async () => {
   await addBadakPointDB("usa");
   await addBadakPointDB("south-korea");
 };
+
+updateBadakPointDB().catch((e) => {
+  console.log(e);
+});

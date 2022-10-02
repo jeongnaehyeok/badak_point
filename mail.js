@@ -2,21 +2,21 @@ const fs = require("fs");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
-const { getPoint } = require("./getPoint");
+const { getPoint } = require("./utils/getPoint");
 const { formatInTimeZone } = require("date-fns-tz");
-const { generateTodayPointContents } = require("./generateContents");
+const { generateTodayPointContents } = require("./utils/generateContents");
 
 dotenv.config();
 
 const getMails = () => {
   const mailsJSON = fs
-    .readFileSync(path.resolve(__dirname, "../mails.json"), "utf-8")
+    .readFileSync(path.resolve(__dirname, "./mails.json"), "utf-8")
     .toString();
   const { mails } = JSON.parse(mailsJSON);
   return [...mails];
 };
 
-module.exports.sendPointMail = async () => {
+const sendPointMail = async () => {
   const mails = getMails();
   const date = formatInTimeZone(new Date(), "Asia/Seoul", "yyyy년 MM월 dd일");
 
@@ -52,3 +52,7 @@ module.exports.sendPointMail = async () => {
 
   console.log("Message sent: %s", info.messageId);
 };
+
+sendPointMail().catch((e) => {
+  console.log(e);
+});

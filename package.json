@@ -6,7 +6,9 @@
   "author": "naehyeok.jeong <cnh0301@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "yarn start:mail && yarn start:notion",
+    "start:mail": "node mail.js",
+    "start:notion": "node notion.js"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.0",
