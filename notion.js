@@ -35,11 +35,11 @@ const addBadakPointDB = async (country) => {
           type: "number",
           number: point,
         },
-        최고가: {
+        신고가: {
           type: "number",
           number: high,
         },
-        최저가: {
+        신저가: {
           type: "number",
           number: low,
         },
