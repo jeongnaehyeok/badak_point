@@ -5,9 +5,7 @@ const get52WeekHighLength = (country) =>
   api.get(`/equities/52-week-high?country=${country}`).then((res) => {
     const $ = cheerio.load(res.data);
     try {
-      return $(
-        "#stockPageInnerContent > table > tbody > tr > td.left.bold.plusIconTd.elp > a"
-      ).toArray().length;
+      return $("tr").data("test", "equities-price-row").toArray().length;
     } catch (e) {
       console.log(e);
     }
@@ -17,9 +15,7 @@ const get52WeekLowLength = (country) =>
   api.get(`/equities/52-week-low?country=${country}`).then((res) => {
     const $ = cheerio.load(res.data);
     try {
-      return $(
-        "#stockPageInnerContent > table > tbody > tr > td.left.bold.plusIconTd.elp > a"
-      ).toArray().length;
+      return $("tr").data("test", "equities-price-row").toArray().length;
     } catch (e) {
       console.log(e);
     }
