@@ -21,14 +21,14 @@ const sendPointMail = async () => {
   const date = formatInTimeZone(new Date(), "Asia/Seoul", "yyyy년 MM월 dd일");
 
   const usaVestData = await getPoint("usa");
-  const krVestData = await getPoint("south-korea");
+  const krVestData = await getPoint("south_korea");
 
   const usaInfo = await generateTodayPointContents({
     country: "usa",
     ...usaVestData,
   });
   const krInfo = await generateTodayPointContents({
-    country: "south-korea",
+    country: "south_korea",
     ...krVestData,
   });
 

@@ -1,6 +1,6 @@
 const countrys = {
   usa: "미국",
-  "south-korea": "한국",
+  south_korea: "한국",
 };
 
 module.exports.generateTodayPointContents = ({ country, point, high, low }) => {

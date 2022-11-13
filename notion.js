@@ -8,7 +8,7 @@ dotenv.config();
 
 const countrys = {
   usa: process.env.NOTION_US_DATABASE_ID,
-  "south-korea": process.env.NOTION_KR_DATABASE_ID,
+  south_korea: process.env.NOTION_KR_DATABASE_ID,
 };
 
 const notion = new Client({ auth: process.env.NOTION_USER_KEY });
@@ -50,7 +50,7 @@ const addBadakPointDB = async (country) => {
 
 const updateBadakPointDB = async () => {
   await addBadakPointDB("usa");
-  await addBadakPointDB("south-korea");
+  await addBadakPointDB("south_korea");
 };
 
 updateBadakPointDB().catch((e) => {
